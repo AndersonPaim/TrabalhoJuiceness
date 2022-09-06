@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,20 +19,23 @@ public class PlayerController : MonoBehaviour
 
         if (direction.y != 0)
         {
-            _anim.SetBool("IsWalking", true);
-
             if(direction.y > 0)
             {
+                _anim.SetBool("IsWalking", true);
+                _anim.SetBool("IsWalkingBackwards", false);
                 _rb.velocity = transform.forward * -_moveSpeed;
             }
             else
             {
+                _anim.SetBool("IsWalking", false);
+                _anim.SetBool("IsWalkingBackwards", true);
                 _rb.velocity = transform.forward * _moveSpeed;
             }
         }
         else
         {
             _anim.SetBool("IsWalking", false);
+            _anim.SetBool("IsWalkingBackwards", false);
         }
     }
 
